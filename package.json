@@ -32,7 +32,8 @@
   "homepage": "https://github.com/widmofazowe/nest-mailer#readme",
   "dependencies": {
     "@nestjs/common": "^9.0.11",
-    "@nestjs/core": "^9.0.11"
+    "@nestjs/core": "^9.0.11",
+    "@nestjs/event-emitter": "^1.3.1"
   },
   "devDependencies": {
     "eslint": "^8.23.0",
