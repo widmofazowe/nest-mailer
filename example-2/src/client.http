@@ -1,0 +1,4 @@
+@APP_URL = http://localhost:3002
+
+###
+GET {{APP_URL}}/send-cmd
