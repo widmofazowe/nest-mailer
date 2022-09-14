@@ -1,11 +1,7 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { OnEvent } from '@nestjs/event-emitter';
-import { Mailer } from '../mailer.service';
-import { SendEmailEvent } from './send-email.event';
-
-export const MAILER = Symbol('MAILER');
-
-export const SEND_EMAIL_EVENT = 'mailer.send.email';
+import { MAILER, Mailer } from '../mailer.service';
+import { SendEmailEvent, SEND_EMAIL_EVENT } from './send-email.event';
 
 @Injectable()
 export class SendEmailListener {

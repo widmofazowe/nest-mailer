@@ -1,6 +1,6 @@
 import { DynamicModule, Module, Type } from '@nestjs/common';
 import { MandrillMailer } from './clients/mandrill.service';
-import { MAILER } from './listeners/send-email.listener';
+import { MAILER, SendEmailListener } from './listeners/send-email.listener';
 import { Mailer } from './mailer.service';
 
 interface ModuleProps {
@@ -15,6 +15,7 @@ export class MailerModule {
       global: true,
       providers: [
         MandrillMailer,
+        SendEmailListener,
         {
           provide: MAILER,
           useClass: mailer,
