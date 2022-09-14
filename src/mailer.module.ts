@@ -1,5 +1,25 @@
-import { Module } from '@nestjs/common';
+import { DynamicModule, Module, Type } from '@nestjs/common';
 import { MandrillMailer } from './clients/mandrill.service';
+import { MAILER } from './listeners/send-email.listener';
+import { Mailer } from './mailer.service';
 
-@Module({ providers: [MandrillMailer] })
-export class MailerModule {}
+interface ModuleProps {
+  mailer: Type<Mailer>;
+}
+
+@Module({})
+export class MailerModule {
+  static forRoot({ mailer }: ModuleProps): DynamicModule {
+    return {
+      module: MailerModule,
+      global: true,
+      providers: [
+        MandrillMailer,
+        {
+          provide: MAILER,
+          useClass: mailer,
+        },
+      ],
+    };
+  }
+}
