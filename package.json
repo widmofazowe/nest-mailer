@@ -1,5 +1,5 @@
 {
-  "name": "nest-mailer",
+  "name": "nest-mailer-module",
   "version": "1.0.1",
   "description": "NestJS Discovery Module",
   "main": "lib/index.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/widmofazowe/nest-mailer.git"
+    "url": "git+https://github.com/widmofazowe/nest-mailer-module.git"
   },
   "files": [
     "lib/**/*"
@@ -27,9 +27,9 @@
   ],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/widmofazowe/nest-mailer/issues"
+    "url": "https://github.com/widmofazowe/nest-mailer-module/issues"
   },
-  "homepage": "https://github.com/widmofazowe/nest-mailer#readme",
+  "homepage": "https://github.com/widmofazowe/nest-mailer-module#readme",
   "dependencies": {
     "@nestjs/common": "^9.0.11",
     "@nestjs/core": "^9.0.11",
