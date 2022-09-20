@@ -14,7 +14,6 @@ export class MailerModule {
       module: MailerModule,
       global: true,
       providers: [
-        MandrillMailer,
         SendEmailListener,
         {
           provide: MAILER,
