@@ -4,7 +4,7 @@ import { SendEmailListener } from './listeners/send-email.listener';
 import { MAILER, Mailer } from './mailer.service';
 
 interface ModuleProps {
-  mailer: Type<Mailer>;
+  mailer: Mailer;
 }
 
 @Module({})
@@ -17,7 +17,7 @@ export class MailerModule {
         SendEmailListener,
         {
           provide: MAILER,
-          useClass: mailer,
+          useValue: mailer,
         },
       ],
     };
