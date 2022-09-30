@@ -6,11 +6,14 @@ interface MessageFrom {
   email: string;
 }
 
-export interface Message {
+export interface NoContentMessage {
   subject: string;
   from?: MessageFrom;
   to: Recipient[];
+  attachments?: Attachment[];
+}
+
+export interface Message extends NoContentMessage {
   html?: string;
   text?: string;
-  attachments?: Attachment[];
 }

@@ -12,8 +12,9 @@ export class SendEmailListener {
   @OnEvent(SEND_EMAIL_EVENT)
   async handleEvent(event: SendEmailEvent) {
     try {
-      this.logger.log(event, 'Handling send email event');
-      this.mailer.send({ ...event });
+      const loggerContext = { to: event.message.to, subject: event.message.subject };
+      this.logger.log(loggerContext, 'Handling send email event');
+      this.mailer.send({ ...event.message });
     } catch (e) {
       this.logger.error(e, 'Error while processing send email event');
     }
