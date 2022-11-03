@@ -12,21 +12,22 @@ interface ModuleProps {
 @Module({})
 export class MailerModule {
   static forRoot({ mailer, renderer }: ModuleProps): DynamicModule {
+    const exportedServices = [
+      {
+        provide: MAILER,
+        useValue: mailer,
+      },
+      {
+        provide: RENDERER,
+        useValue: renderer,
+      },
+    ];
+
     return {
       module: MailerModule,
       global: true,
-      providers: [
-        SendEmailListener,
-        SendTemplateEmailListener,
-        {
-          provide: MAILER,
-          useValue: mailer,
-        },
-        {
-          provide: RENDERER,
-          useValue: renderer,
-        },
-      ],
+      providers: [SendEmailListener, SendTemplateEmailListener, ...exportedServices],
+      exports: exportedServices,
     };
   }
 }
