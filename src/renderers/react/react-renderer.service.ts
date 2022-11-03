@@ -15,7 +15,7 @@ export class ReactRenderer implements EmailRenderer {
   render(template: EmailTemplate, mergeVars?: Record<string, any>) {
     try {
       const sheet = new ServerStyleSheet();
-      const componentWithStyles = sheet.collectStyles(ReactWrapper({ children: template.content }));
+      const componentWithStyles = sheet.collectStyles(template.content);
 
       const renderedWithStyles = ReactDOMServer.renderToString(componentWithStyles);
       const preparedHtml = juice(`${sheet.getStyleTags()} ${renderedWithStyles}`);
