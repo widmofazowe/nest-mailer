@@ -9,7 +9,8 @@ import ReactWrapper from './react-wrapper';
 
 export class ReactRenderer implements EmailRenderer {
   private logger = new Logger(ReactRenderer.name);
-  constructor(private components: Record<string, any>) {}
+
+  constructor() {}
 
   render(template: EmailTemplate, mergeVars?: Record<string, any>) {
     try {
