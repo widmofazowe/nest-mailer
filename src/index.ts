@@ -9,3 +9,4 @@ export { SendEmailEvent, SEND_EMAIL_EVENT } from './listeners/send-email.event';
 export { SendTemplatedEmailEvent, SEND_TEMPLATED_EMAIL_EVENT } from './listeners/send-templated-email.event';
 export { EmailRenderer } from './renderers/renderer.service';
 export { ReactRenderer } from './renderers/react/react-renderer.service';
+export { EmailTemplate } from './renderers/models/template';

@@ -14,14 +14,25 @@ export class ReactRenderer implements EmailRenderer {
   render(template: EmailTemplate, mergeVars?: Record<string, any>) {
     try {
       const sheet = new ServerStyleSheet();
-      const componentWithStyles = sheet.collectStyles(
-        ReactWrapper({ children: template.body.map(el => this.components[el.component]({ ...el })) }),
-      );
+      const componentWithStyles = sheet.collectStyles(ReactWrapper({ children: template.content }));
 
       const renderedWithStyles = ReactDOMServer.renderToString(componentWithStyles);
       const preparedHtml = juice(`${sheet.getStyleTags()} ${renderedWithStyles}`);
       sheet.seal();
-      return this.interpolateContent(preparedHtml, mergeVars);
+
+      // this is needed to make proper coding of html comments
+      // this will be used for outlook
+      // styles replace is used because juice strips out extra css which can be
+      // replaced with
+      const htmlWithComments = preparedHtml
+        .replace(/"{\'<!--[if (gte mso 9)|(IE)]>\'}"/g, "{'<!--[if (gte mso 9)|(IE)]>'}")
+        .replace(/"<![endif]-->"/g, '<![endif]-->')
+        .replace(/\&lt;/g, '<')
+        .replace(/\&gt;/g, '>');
+
+      // TODO: pass extra replacers
+
+      return this.interpolateContent(htmlWithComments, mergeVars);
     } catch (e) {
       this.logger.error(e);
     }
