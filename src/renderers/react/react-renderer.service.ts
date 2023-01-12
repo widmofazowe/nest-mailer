@@ -5,7 +5,6 @@ import * as ReactDOMServer from 'react-dom/server';
 import { ServerStyleSheet } from 'styled-components';
 import { EmailTemplate } from '../models/template';
 import { EmailRenderer } from '../renderer.service';
-import ReactWrapper from './react-wrapper';
 
 export class ReactRenderer implements EmailRenderer {
   private logger = new Logger(ReactRenderer.name);
