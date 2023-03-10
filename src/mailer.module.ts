@@ -2,6 +2,7 @@ import { DynamicModule, Module } from '@nestjs/common';
 import { SendEmailListener } from './listeners/send-email.listener';
 import { SendTemplateEmailListener } from './listeners/send-templated-email.listener';
 import { Mailer } from './mailer.service';
+import { ReactRenderer } from './renderers/react/react-renderer.service';
 import { EmailRenderer } from './renderers/renderer.service';
 
 interface ModuleProps {
@@ -19,7 +20,7 @@ export class MailerModule {
       },
       {
         provide: EmailRenderer,
-        useValue: renderer,
+        useValue: renderer || new ReactRenderer(),
       },
     ];
 
