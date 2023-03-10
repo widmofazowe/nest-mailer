@@ -4,10 +4,11 @@ import * as sendgrid from '@sendgrid/mail';
 import { Mailer } from '../mailer.service';
 import { Message } from '../models/message';
 
-export class SendgridMailer implements Mailer {
+export class SendgridMailer extends Mailer {
   private logger = new Logger(SendgridMailer.name);
 
   constructor(sendgridApiKey: string) {
+    super();
     sendgrid.setApiKey(sendgridApiKey);
   }
 

@@ -4,11 +4,12 @@ import { Mandrill } from 'mandrill-api';
 import { Mailer } from '../mailer.service';
 import { Message } from '../models/message';
 
-export class MandrillMailer implements Mailer {
+export class MandrillMailer extends Mailer {
   private logger = new Logger(MandrillMailer.name);
   mandrillClient: any;
 
   constructor(mandrillApiKey: string) {
+    super();
     this.mandrillClient = new Mandrill(mandrillApiKey);
     this.mandrillClient.users.ping(
       {},

@@ -1,8 +1,8 @@
 import { DynamicModule, Module } from '@nestjs/common';
 import { SendEmailListener } from './listeners/send-email.listener';
 import { SendTemplateEmailListener } from './listeners/send-templated-email.listener';
-import { MAILER, Mailer } from './mailer.service';
-import { EmailRenderer, RENDERER } from './renderers/renderer.service';
+import { Mailer } from './mailer.service';
+import { EmailRenderer } from './renderers/renderer.service';
 
 interface ModuleProps {
   mailer: Mailer;
@@ -14,11 +14,11 @@ export class MailerModule {
   static forRoot({ mailer, renderer }: ModuleProps): DynamicModule {
     const exportedServices = [
       {
-        provide: MAILER,
+        provide: Mailer,
         useValue: mailer,
       },
       {
-        provide: RENDERER,
+        provide: EmailRenderer,
         useValue: renderer,
       },
     ];

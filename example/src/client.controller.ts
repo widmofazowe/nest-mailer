@@ -1,6 +1,5 @@
 import { Controller, Get, Inject } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
-import { timeout } from 'rxjs';
 
 @Controller('/')
 export class ClientController {
@@ -8,7 +7,7 @@ export class ClientController {
 
   @Get('/send-cmd')
   async sendCmd() {
-    console.log('asdf');
+    console.log('send-email');
     await this.client.send('send-email', { subject: 'test' }).toPromise();
   }
 }

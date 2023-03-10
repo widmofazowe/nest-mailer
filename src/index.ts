@@ -1,5 +1,5 @@
 export { MailerModule } from './mailer.module';
-export { Mailer, MAILER } from './mailer.service';
+export { Mailer } from './mailer.service';
 export { Message, NoContentMessage } from './models/message';
 export { Recipient } from './models/recipient';
 export { Attachment } from './models/attachment';
@@ -7,6 +7,6 @@ export { MandrillMailer } from './clients/mandrill.service';
 export { SendgridMailer } from './clients/sendgrid.service';
 export { SendEmailEvent, SEND_EMAIL_EVENT } from './listeners/send-email.event';
 export { SendTemplatedEmailEvent, SEND_TEMPLATED_EMAIL_EVENT } from './listeners/send-templated-email.event';
-export { EmailRenderer, RENDERER } from './renderers/renderer.service';
+export { EmailRenderer } from './renderers/renderer.service';
 export { ReactRenderer } from './renderers/react/react-renderer.service';
 export { EmailTemplate } from './renderers/models/template';

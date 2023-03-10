@@ -6,10 +6,12 @@ import { ServerStyleSheet } from 'styled-components';
 import { EmailTemplate } from '../models/template';
 import { EmailRenderer } from '../renderer.service';
 
-export class ReactRenderer implements EmailRenderer {
+export class ReactRenderer extends EmailRenderer {
   private logger = new Logger(ReactRenderer.name);
 
-  constructor() {}
+  constructor() {
+    super();
+  }
 
   render(template: EmailTemplate, mergeVars?: Record<string, any>) {
     try {
